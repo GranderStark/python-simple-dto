@@ -29,19 +29,11 @@ class DtoTestCase(TestCase):
         self.assertEqual(result, COMPLEX_DTO_TEST)
         self.assertEqual(result.users[0].name, COMPLEX_DTO_TEST["users"][0]["name"])
 
-    def test_complex_dto_construct(self):
-        """
-        test DTO with complex dict and setting data trough _construct
-        """
-        result = DTO()._construct(COMPLEX_DTO_TEST)
-        self.assertEqual(result, COMPLEX_DTO_TEST)
-        self.assertEqual(result.users[0].name, COMPLEX_DTO_TEST["users"][0]["name"])
-
     def test_complex_dto_update(self):
         """
         test updating DTO with complex dict
         """
-        result = DTO()._construct(COMPLEX_DTO_TEST)
+        result = DTO(COMPLEX_DTO_TEST)
         result.attribute_a = ATTRIBUTE_A
         result["attribute_b"] = ATTRIBUTE_B
         self.assertEqual(result["attribute_a"], ATTRIBUTE_A)
