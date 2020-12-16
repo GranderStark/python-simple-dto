@@ -26,6 +26,7 @@ class DtoTestCase(TestCase):
         result = BaseDTO(BASIC_DTO_TEST)
         self.assertEqual(result, BASIC_DTO_TEST)
         self.assertEqual(result.name, BASIC_DTO_TEST["name"])
+        self.assertRaises(AttributeError, lambda: result.not_exists)
 
     def test_complex_dto(self):
         """

@@ -4,6 +4,19 @@ Package which contains classes that implements object-like behaviour with dict
 from collections import OrderedDict
 
 
+class DictInitSuppressorMixin:
+    """
+    suppresses __init__
+    """
+
+    def __init__(self, *args, **kwargs):
+        """
+        empty __init__
+        :param args:
+        :param kwargs:
+        """
+
+
 class BaseDTO(dict):
     """
     basic behaviour with "flat" dicts
@@ -26,11 +39,11 @@ class BaseDTO(dict):
         """
         try:
             return self[item]
-        except KeyError:
-            raise AttributeError
+        except KeyError as k_e:
+            raise AttributeError from k_e
 
 
-class DTO(BaseDTO):
+class DTO(DictInitSuppressorMixin, BaseDTO):
     """
     for complex dicts
     """
@@ -50,10 +63,10 @@ class DTO(BaseDTO):
                 instance = data
         return instance
 
-    def __init__(self, *args, **kwargs):
-        """
-        supressed
-        :param args:
-        :param kwargs:
-        """
-        pass
+    # def __init__(self, *args, **kwargs):
+    #     """
+    #     supressed
+    #     :param args:
+    #     :param kwargs:
+    #     """
+    #     pass
