@@ -33,32 +33,25 @@ class DTO(BaseDTO):
     """
     for complex dicts
     """
-
-    def __init__(self, data=None):
-        """
-        __init__ with hybrid behaviour
-        :param data:
-        """
-        super().__init__()
+    def __new__(cls, data=None):
+        instance = super(DTO, cls).__new__(cls, data)
         if data:
             if isinstance(data, (dict, OrderedDict)):
                 for k, v in data.items():
-                    setattr(self, k, self._construct(v))
+                    setattr(instance, k, DTO(v))
+            elif isinstance(data, list):
+                _l = []
+                for v in data:
+                    _l.append(DTO(v))
+                instance = _l
+            else:
+                instance = data
+        return instance
 
-    def _construct(self, data):
+    def __init__(self, *args, **kwargs):
         """
-        constructor for complex dicts
-        :param data:
-        :return:
+        supressed
+        :param args:
+        :param kwargs:
         """
-        if isinstance(data, (dict, OrderedDict)):
-            for k, v in data.items():
-                setattr(self, k, DTO()._construct(v))
-            return self
-        elif isinstance(data, list):
-            _l = []
-            for v in data:
-                _l.append(DTO()._construct(v))
-            return _l
-        else:
-            return data
+        pass
