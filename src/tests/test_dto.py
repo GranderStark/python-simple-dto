@@ -3,9 +3,15 @@ Tests for dto
 """
 from unittest import TestCase
 
-from src.python_simple_dto.dto import BaseDTO, DTO
-from src.tests.test_data.constants import BASIC_DTO_TEST, COMPLEX_DTO_TEST, \
-    DTO_ATTRIBUTE, DICT_ATTRIBUTE, ATTRIBUTE_A, ATTRIBUTE_B
+from src.python_simple_dto.dto import DTO, BaseDTO
+from src.tests.test_data.constants import (
+    ATTRIBUTE_A,
+    ATTRIBUTE_B,
+    BASIC_DTO_TEST,
+    COMPLEX_DTO_TEST,
+    DICT_ATTRIBUTE,
+    DTO_ATTRIBUTE,
+)
 
 
 class DtoTestCase(TestCase):

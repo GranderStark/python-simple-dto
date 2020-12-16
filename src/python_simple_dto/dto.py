@@ -8,6 +8,7 @@ class BaseDTO(dict):
     """
     basic behaviour with "flat" dicts
     """
+
     def __setattr__(self, key, value):
         """
         setter
@@ -33,6 +34,7 @@ class DTO(BaseDTO):
     """
     for complex dicts
     """
+
     def __new__(cls, data=None):
         instance = super(DTO, cls).__new__(cls, data)
         if data:
