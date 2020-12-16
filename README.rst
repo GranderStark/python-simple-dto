@@ -9,6 +9,6 @@ Dict, that behaves like an object.
 .. |Code Coverage| image:: https://codecov.io/gh/GranderStark/python-simple-dto/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/GranderStark/python-simple-dto
 .. |Build Status Travis CI| image:: https://travis-ci.org/GranderStark/python-simple-dto.svg?branch=master
-    :target: https://travis-ci.org/GranderStark/python-simple-dto
+    :target: https://travis-ci.com/GranderStark/python-simple-dto
 .. |License| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target:  https://opensource.org/licenses/MIT
