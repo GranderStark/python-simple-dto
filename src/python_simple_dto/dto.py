@@ -50,23 +50,14 @@ class DTO(DictInitSuppressorMixin, BaseDTO):
 
     def __new__(cls, data=None):
         instance = super(DTO, cls).__new__(cls, data)
-        if data:
-            if isinstance(data, (dict, OrderedDict)):
-                for k, v in data.items():
-                    setattr(instance, k, DTO(v))
-            elif isinstance(data, list):
-                _l = []
-                for v in data:
-                    _l.append(DTO(v))
-                instance = _l
-            else:
-                instance = data
+        if isinstance(data, (dict, OrderedDict)):
+            for k, v in data.items():
+                setattr(instance, k, DTO(v))
+        elif isinstance(data, list):
+            _l = []
+            for v in data:
+                _l.append(DTO(v))
+            instance = _l
+        else:
+            instance = data
         return instance
-
-    # def __init__(self, *args, **kwargs):
-    #     """
-    #     supressed
-    #     :param args:
-    #     :param kwargs:
-    #     """
-    #     pass
